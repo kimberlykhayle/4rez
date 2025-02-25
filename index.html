@@ -8,52 +8,49 @@
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
-            background-color: black; /* Set background to black */
+            background-color: #ffe6e6;
             padding: 50px;
         }
 
-        .envelope-container {
+        .container {
             position: relative;
             display: inline-block;
             cursor: pointer;
         }
 
+        /* Envelope styling */
         .envelope {
-            width: 300px;
-            height: 200px;
-            background: red; /* Envelope is red */
-            position: relative;
-            border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(255, 0, 0, 0.5);
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .flap {
+            width: 150px;
+            height: 100px;
+            background: #d6336c;
             position: absolute;
             top: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-left: 150px solid transparent;
-            border-right: 150px solid transparent;
-            border-bottom: 100px solid darkred;
-            transform-origin: top;
-            transition: transform 0.5s ease-in-out;
+            left: 50%;
+            transform: translateX(-50%);
+            clip-path: polygon(0 0, 100% 0, 100% 60%, 50% 100%, 0 60%);
+            transition: opacity 0.5s ease-in-out;
         }
 
+        /* Letter styling */
         .letter {
-            width: 260px;
-            background: black; /* Letter background is black */
-            color: red; /* Text is red */
+            background: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(255, 0, 0, 0.5);
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100%);
-            opacity: 0;
-            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            display: none; /* Hidden at first */
+            text-align: left;
+            max-width: 600px;
+            margin-top: 20px;
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+
+        h1 {
+            color: #d6336c;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
         }
 
         .footer {
@@ -61,35 +58,33 @@
             font-style: italic;
         }
 
-        /* Open Envelope Animation */
-        .envelope-container.open .flap {
-            transform: rotateX(180deg);
-        }
-
-        .envelope-container.open .letter {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
 
-    <h1 style="color: red;">Click to Open Your Letter, My Love ❤️</h1>
+    <div class="container" onclick="openLetter()">
+        <!-- Envelope -->
+        <div class="envelope"></div>
 
-    <div class="envelope-container" onclick="openEnvelope()">
-        <div class="envelope">
-            <div class="flap"></div>
-        </div>
-        <div class="letter">
-            <h2>Happy Second Monthsary, My Love!</h2>
+        <!-- Letter (hidden at first) -->
+        <div class="letter" id="letter">
+            <h1>Happy Second Monthsary, My Love!</h1>
             <p>
                 I know we’ve been missing each other a lot lately, caught up in everything we have to do, but even with all that, I appreciate you for always making time for me...
             </p>
             <p>
-                No matter how much time passes, even when we are already celebrating our 50th anniversary, I don’t think I’ll ever fully grasp the depth of what we have...
-            </p>
-            <p>
-                Loving you is a privilege I will never take for granted...
+                Happy second month to forever, Rez...
             </p>
             <div class="footer">
                 <p>Forever yours,</p>
@@ -99,8 +94,9 @@
     </div>
 
     <script>
-        function openEnvelope() {
-            document.querySelector(".envelope-container").classList.toggle("open");
+        function openLetter() {
+            document.querySelector('.envelope').style.opacity = '0'; // Hide envelope
+            document.getElementById('letter').style.display = 'block'; // Show letter
         }
     </script>
 
