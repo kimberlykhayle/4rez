@@ -6,28 +6,35 @@
     <title>Happy Second Monthsary, My Love</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=EB+Garamond&display=swap" rel="stylesheet">
 
     <style>
         body {
             font-family: 'EB Garamond', serif;
             text-align: center;
-            background-color: #EO115F;
+            background-color: #FFD1DC; /* Soft Pink */
             padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
         .letter {
-            background: white;
+            background: #FFF5EE; /* Seashell Color */
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-            display: inline-block;
-            text-align: left;
+            box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
             max-width: 600px;
+            text-align: left;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 1s ease-out, transform 0.8s ease-out;
         }
         h1 {
-            color: #FFB6C1;
+            color: #E75480; /* Rose Pink */
             font-family: 'Dancing Script', cursive;
             font-size: 32px;
+            text-align: center;
         }
         p {
             font-size: 16px;
@@ -38,10 +45,17 @@
             font-style: italic;
             font-weight: 600;
         }
+
+        /* Opening Animation */
+        .letter.open {
+            opacity: 1;
+            transform: scale(1);
+        }
     </style>
 </head>
 <body>
-    <div class="letter">
+
+    <div class="letter" id="loveLetter">
         <h1>Happy Second Monthsary, My Love!</h1>
         <p>
             i know we’ve been missing each other a lot lately because we both have a lot on our plate, but either way, i appreciate you for still doing your best to talk to me. this website is purely html XD obviously, i’m not knowledgeable yet about advanced coding languages, but yeah, anyway, i’ll also use this website to share my appreciation message for you, just added some extra steps as well hehe. the process was actually fun. 
@@ -69,6 +83,14 @@
             <p>Forever yours,</p>
             <p>Kayce</p>
         </div>
+    </div>
+
+    <script>
+        // Apply animation effect when page loads
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("loveLetter").classList.add("open");
+        });
+    </script>
 
 </body>
 </html>
